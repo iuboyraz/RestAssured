@@ -1,0 +1,26 @@
+https://jsonpathfinder.com/
+Aþaðýdaki "Body" de bulunan elemanlarýn RestAssured da nasýl alýnacaðýný görmek için
+"Body"i bu sitedeki yere yapýþtýr böylece sað taraftan görebilirsin.
+
+Postman                             RestAssured
+body =pm.Response.Json()            body
+body.country                        body("country")
+body.'post code'                    body("post Code")
+                                    body("places[0].state")
+                                    body("places.state")  -> dizideki bütün stateleri verir
+
+"Body"
+{
+    "post code": "90210",
+    "country": "United States",
+    "country abbreviation": "US",
+    "places": [
+        {
+            "place name": "Beverly Hills",
+            "longitude": "-118.4065",
+            "state": "California",
+            "state abbreviation": "CA",
+            "latitude": "34.0901"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+Gerekli Bilgiler
+
+1- endpoint: https://gorest.co.in/public/v2/users
+2- method: POST
+
+3- request body
+{
+"name":"{{$randomFullName}}",
+"gender":"male",
+"email":"{{$randomEmail}}",
+"status":"active"
+}
+
+4- Authorization
+Bearer Token
+a65330413b2f4ed1a0b342a3370742c7e81b2f87b0e63739ee04ee110d8bd5ae
+
+5- Response status code 201
+
+Ayrıca javada PUT ve DELETE işlemlerinde kullanmak için id extract yapılacak
+
+6- Faker dependency'i POM'a ekle
