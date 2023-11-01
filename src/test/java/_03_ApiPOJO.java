@@ -19,7 +19,7 @@ public class _03_ApiPOJO {
                         .get("http://api.zippopotam.us/us/90210")
 
                         .then()
-                        .extract().body().as(Location.class) // Location class ýna göre body i extract et
+                        .extract().body().as(Location.class) // Location class ýna göre body i extract et ve adýna da location de
                 ;
 
         System.out.println("location = " + location);
@@ -31,7 +31,7 @@ public class _03_ApiPOJO {
         for (Place p : location.getPlaces())
             System.out.println("p = " + p);
 
-        // JsonSerialise(location);  developer bu þekilde Location nesnesini Json'a dönüþtürmüþtü
+        // JsonSerialise(location);  developer bu þekilde location nesnesini Json'a dönüþtürmüþtü
         // bende tersine çevirdim yani JsonDeserialize yaptým.
         // Böylece NESNE yi elde ettim.
     }

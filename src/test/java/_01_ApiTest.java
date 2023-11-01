@@ -44,8 +44,8 @@ public class _01_ApiTest {
                 .get("http://api.zippopotam.us/us/90210")
 
                 .then()
-                .log().body() // Response da "Body" kısmındaki datayı json tipinde console yazdırıyor, .log().all() // HTTP protokolünde gelen tüm datayı gösteriyor.
-                .statusCode(200) // POSTMAN, Response kısmındaki "Test Results" sonucuna bakıyor.
+                .log().body()
+                .statusCode(200)
                 .contentType(ContentType.JSON) // Response daki "Body" kısmında gelen datanın tipini assert ediyor (JSON mı diye).
         ;
     }
@@ -57,8 +57,8 @@ public class _01_ApiTest {
                 .get("http://api.zippopotam.us/us/90210")
 
                 .then()
-                .log().body() // Json tipinde data yazdırıyor
-                .statusCode(200) // status code un assertion ı
+                .log().body()
+                .statusCode(200)
                 .body("country", equalTo("United States")) // country nin assertion ı
         ;
     }
@@ -76,7 +76,7 @@ public class _01_ApiTest {
                 .then()
                 .log().body()
                 .statusCode(200)
-                .body("places[0].state", equalTo("California")) // places in state nin assertion ı [0] demeseydik tüm diziye bakardı.
+                .body("places[0].state", equalTo("California")) // "places[0].state", [0] demeseydik tüm diziye bakardı.
         ;
     }
 
@@ -92,7 +92,7 @@ public class _01_ApiTest {
                 .then()
                 .log().body()
                 .statusCode(200)
-                .body("places.'place name'", hasItem("Dörtağaç Köyü")) // places in place name nin assertion ı
+                .body("places.'place name'", hasItem("Dörtağaç Köyü")) // "places" in 'place name' nin assertion ı
         ;
     }
 
@@ -191,7 +191,7 @@ public class _01_ApiTest {
                     .then()
                     .statusCode(200)
                     .body("meta.pagination.page", equalTo(i));
-            // Aslında bu tek komut dolayısıyla bu komutu 10 kere fori ile döndürüyoruz.
+            // Aslında bu aşağıda görüldüğü üzere tek komut, dolayısıyla bu komutu 10 kere fori ile döndürüyoruz.
             // given().queryParam("page", i).log().uri().when().get("https://gorest.co.in/public/v1/users").then().statusCode(200).body("meta.pagination.page", equalTo(i));
         }
     }

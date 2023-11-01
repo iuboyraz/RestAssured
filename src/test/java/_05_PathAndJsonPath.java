@@ -96,7 +96,7 @@ public class _05_PathAndJsonPath {
             System.out.println("data " + i + "= " + data.get(i));
         }
     }
-
+    // 2. yöntem
     @Test
     public void getData2() {
 

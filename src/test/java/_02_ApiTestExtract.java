@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class _02_ApiTestExtract {
     @Test
@@ -15,10 +16,11 @@ public class _02_ApiTestExtract {
                         .get("http://api.zippopotam.us/us/90210")
 
                         .then()
+                        // .body("country", equalTo("United States")) extract kullanmasaydýk bu þekilde çözerdik.
                         .extract().path("country")
+
                 ;
-        // Response ile gelen "body" nin içindeki
-        // country deðiþkeninin yolunu alýp
+        // Response ile gelen "body" nin içindeki country datasýnýn yolunu kullanarak deðerini alýp
         // String tipindeki countryName deðiþkenine eþitleyerek
         // veriyi dýþarý almýþ oldum.
 
@@ -43,7 +45,7 @@ public class _02_ApiTestExtract {
         Assert.assertEquals(stateName,"California");
     }
 
-    // Soru : "http://api.zippopotam.us/us/90210"  endpoint indne dönen
+    // Soru : "http://api.zippopotam.us/us/90210"  endpoint inden dönen
     // places dizisinin ilk elemanýnýn place name deðerinin  "Beverly Hills"
     // olduðunu testNG Assertion ile doðrulayýnýz
     @Test
@@ -89,7 +91,7 @@ public class _02_ApiTestExtract {
                         //.log().body() // tüm listeyi alýp https://jsonpathfinder.com/ dan id lerin path'ini bulup sonraki komutta kullanabiliriz.
                         .extract().path("data.id") // data[0].id gibi bir index kullanmadýðýmýz için tüm data.id leri listeye atýyor.
                 ;
-        System.out.println("idler = " + ids);
+        System.out.println("idler = " + ids); // fori ya da for each ile de yazdýrýlabilir.
     }
 
     @Test
@@ -126,6 +128,6 @@ public class _02_ApiTestExtract {
 
         Assert.assertTrue(names.contains("Mahesh Menon"));
         Assert.assertTrue(ids.contains(5599126));
-        Assert.assertTrue(limit==10);
+        Assert.assertEquals(limit, 10); //Assert.assertTrue(limit==10);
     }
 }

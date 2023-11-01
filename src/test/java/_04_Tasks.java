@@ -37,7 +37,7 @@ public class _04_Tasks {
      create a request to https://jsonplaceholder.typicode.com/todos/2
      expect status 200
      expect content type JSON
-     a- expect response completed status to be false(using hamcrest)
+     a- expected response completed status is to be false(using hamcrest)
      b- extract completed field and assert it using testNG Assertion
      */
 
@@ -69,14 +69,14 @@ public class _04_Tasks {
                         .statusCode(200)
                         .contentType(ContentType.JSON)
                         .extract().path("completed");// verinin dýþarý alýnmasý
-        Assert.assertFalse(bool);// ve verinin kontrolü
+        Assert.assertFalse(bool);// verinin kontrolü
         //Assert.assertFalse(bool.equals("false"));
     }
 
     /*
     Task 3
-    create a request to https://jsonplaceholder.typicode.com/todos/2
-    converting into the POJO
+    create a request for https://jsonplaceholder.typicode.com/todos/2
+    converting it into the POJO
     */
     @Test
     public void Task3() {
