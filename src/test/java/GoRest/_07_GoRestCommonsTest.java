@@ -4,15 +4,13 @@ import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class _07_GoRestCommonsTest {
     Faker randomGenerator = new Faker();
@@ -25,7 +23,7 @@ public class _07_GoRestCommonsTest {
 
         requestSpec = new RequestSpecBuilder()
                 .addHeader("Authorization", "Bearer a65330413b2f4ed1a0b342a3370742c7e81b2f87b0e63739ee04ee110d8bd5ae")
-                // her seferinde header'ı yazmamak için spec içine yerleşitrdik ve ilerleyen testlerde kullanacağız.
+                // her seferinde header'ı yazmamak için spec içine yerleştirdik ve ilerleyen testlerde kullanacağız.
                 .setContentType(ContentType.JSON)
                 .build()
         ;
