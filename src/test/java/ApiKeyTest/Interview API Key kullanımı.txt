@@ -1,0 +1,9 @@
+Interview da
+endpoint: https://l9njuzrhf3.execute-api.eu-west-1.amazonaws.com/prod/user
+olarak verilir.
+Bearer Token yerine de Api Key -> key , value olarak verilir.
+
+key: x-api-key
+value:GwMco9Tpstd5vbzBzlzW9I7hr6E1D7w2zEIrhOra
+
+POSTMAN da ApiKeyTest/Authorization ý incele !
