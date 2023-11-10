@@ -44,9 +44,9 @@
 
     </dependencies>
 
-    <!--    Maven test çalıştırınca çalıştırılacak bölümün setlenmesi kısmı-->
+    <!-- Right side bardaki Maven/Lifecycle den "test" tıklanarak test çalıştırılınca çalışacak bölümün set edilmesi için eklenen dependency-->
 
-    <!--  Jenkins in Çalıştırma komutunun , nereyi açlıştıracağını belirlediğimiz plugin -->
+    <!--  Jenkins te Build now dediğimizde, nerenin çalıştırılacağını belirlememizi sağlayan plugin -->
     <!--    https://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html-->
     <build>
         <plugins>
