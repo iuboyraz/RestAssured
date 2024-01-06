@@ -11,12 +11,12 @@ import java.util.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-public class _09_PositionCategoriesTest {
+public class _10_AttestationsTest {
     Faker randomGenerator = new Faker();
-    String positionCategoryId;
+    String attestationId;
     RequestSpecification requestSpec;
-    String rndPositionCategoryName;
-    Map<String, String> newPositionCategory;
+    String rndAttestationName;
+    Map<String, String> newAttestation;
     @BeforeClass
     public void setUp() {
         baseURI = "https://test.mersys.io/";
@@ -46,39 +46,39 @@ public class _09_PositionCategoriesTest {
         ;
     }
     @Test
-    public void createPositionCategory(){
+    public void createAttestation(){
 
-        rndPositionCategoryName = randomGenerator.job().field() + randomGenerator.number().digits(5);
+        rndAttestationName = randomGenerator.name().fullName() + randomGenerator.number().digits(5);
 
-        newPositionCategory = new HashMap<>();
-        newPositionCategory.put("name", rndPositionCategoryName);
+        newAttestation = new HashMap<>();
+        newAttestation.put("name", rndAttestationName);
 
-        positionCategoryId =
+        attestationId =
                 given()
 
                         .spec(requestSpec)
-                        .body(newPositionCategory)
+                        .body(newAttestation)
 
                         .when()
-                        .post("school-service/api/position-category/")
+                        .post("school-service/api/attestation/")
 
                         .then()
                         .log().body()
                         .statusCode(201)
                         .extract().path("id")
         ;
-        System.out.println("positionCategoryId = " + positionCategoryId);
+        System.out.println("attestationId = " + attestationId);
     }
-    @Test (dependsOnMethods = "createPositionCategory")
-    public void createPositionCategoryNegative(){
+    @Test (dependsOnMethods = "createAttestation")
+    public void createAttestationNegative(){
 
                 given()
 
                         .spec(requestSpec)
-                        .body(newPositionCategory)
+                        .body(newAttestation)
 
                         .when()
-                        .post("school-service/api/position-category/")
+                        .post("school-service/api/attestation/")
 
                         .then()
                         .log().body()
@@ -86,64 +86,64 @@ public class _09_PositionCategoriesTest {
                         .body("message", containsString("already exists."))
 
         ;
-        System.out.println("positionCategoryId = " + positionCategoryId);
+        System.out.println("attestationId = " + attestationId);
     }
-    @Test (dependsOnMethods = "createPositionCategoryNegative")
-    public void updatePositionCategory(){
-        String newPositionCategoryName = randomGenerator.job().field() + randomGenerator.number().digits(5);
+    @Test (dependsOnMethods = "createAttestationNegative")
+    public void updateAttestation(){
+        String newAttestationName = randomGenerator.job().field() + randomGenerator.number().digits(5);
 
-        Map<String, String> updatePositionCategory = new HashMap<>();
-        updatePositionCategory.put("id", positionCategoryId);
-        updatePositionCategory.put("name", newPositionCategoryName);
+        Map<String, String> updateAttestation = new HashMap<>();
+        updateAttestation.put("id", attestationId);
+        updateAttestation.put("name", newAttestationName);
 
         given()
 
                 .spec(requestSpec)
-                .body(updatePositionCategory)
+                .body(updateAttestation)
 
                 .when()
-                .put("school-service/api/position-category/")
+                .put("school-service/api/attestation/")
 
                 .then()
                 .log().body()
                 .statusCode(200)
-                .body("name", equalTo(newPositionCategoryName))
+                .body("name", equalTo(newAttestationName))
 
         ;
-        System.out.println("positionCategoryId = " + positionCategoryId);
-        System.out.println("newPositionCategoryName = " + newPositionCategoryName);
+        System.out.println("positionCategoryId = " + attestationId);
+        System.out.println("newAttestationName = " + newAttestationName);
     }
-    @Test (dependsOnMethods = "updatePositionCategory")
-    public void deletePositionCategory(){
+    @Test (dependsOnMethods = "updateAttestation")
+    public void deleteAttestation(){
 
         given()
                 .spec(requestSpec)
 
                 .when()
-                .delete("school-service/api/position-category/" + positionCategoryId)
+                .delete("school-service/api/attestation/" + attestationId)
 
                 .then()
                 .log().body()
                 .statusCode(204)
 
         ;
-        System.out.println("positionCategoryId = " + positionCategoryId);
+        System.out.println("attestationId = " + attestationId);
     }
-    @Test (dependsOnMethods = "deletePositionCategory")
-    public void deletePositionCategoryNegative(){
+    @Test (dependsOnMethods = "deleteAttestation")
+    public void deleteAttestationNegative(){
 
         given()
                 .spec(requestSpec)
 
                 .when()
-                .delete("school-service/api/position-category/" + positionCategoryId)
+                .delete("school-service/api/attestation/" + attestationId)
 
                 .then()
                 .log().body()
                 .statusCode(400)
-                .body("message", containsString("PositionCategory not  found"))
+                .body("message", containsString("attestation not found"))
 
         ;
-        System.out.println("positionCategoryId = " + positionCategoryId);
+        System.out.println("attestationId = " + attestationId);
     }
 }

@@ -1,4 +1,4 @@
-Genel kullanılanlar
+Mostly used assertions
 
 equalTo(X) - used to check whether an actual element value is equal to a pre-specified expected element value
 hasItem("value") - used to see whether a collection of elements contains a specific pre-specified item value
@@ -13,7 +13,7 @@ greaterThanOrEqualTo – checks whether the extracted number is greater than equ
 lessThan – It checks whether the retrieved number from response is lesser than to the expected number.
 lessThanOrEqualTo – It checks whether the retrieved number from response is lesser than or equal to the expected number.
 
-String related Assertions
+String related assertions
 
 equalTo – It checks whether the extracted string from JSON is equal to the expected string.
 equalToIgnoringCase – It checks whether the extracted string from JSON is equal to the expected string without considering the case (small or capital).

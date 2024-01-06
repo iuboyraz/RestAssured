@@ -1,5 +1,6 @@
 package Campus;
 
+import Campus.Model.County;
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.*;

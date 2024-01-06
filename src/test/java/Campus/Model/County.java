@@ -1,4 +1,4 @@
-package Campus;
+package Campus.Model;
 
 public class County {
     public String id;
